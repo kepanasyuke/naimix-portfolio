@@ -17,7 +17,14 @@
 
 1. [01-project-draft.png](desktop/screenshots/01-project-draft.png) — новый проект с ИИ-описанием и подбором
 2. [02-escrow-held.png](desktop/screenshots/02-escrow-held.png) — сделка, эскроу HELD, уведомление
-3. [03-kpi.png](desktop/screenshots/03-kpi.png) — показатели аналитики
+3. [03-kpi.png](desktop/screenshots/03-kpi.png) — показатели аналитики и команда на карточке
+4. [04-hero-b.png](desktop/screenshots/04-hero-b.png) — вариант персонажа в наушниках
+5. [05-hero-c.png](desktop/screenshots/05-hero-c.png) — вариант персонажа с чашкой кофе
+
+Персонажа в правом нижнем углу можно менять кнопкой «Другой человечек» в сайдбаре:
+три готовых SVG-варианта лежат в `desktop/renderer/assets/hero-*.svg`.
+
+![Кабинет: показатели и команда](desktop/screenshots/03-kpi.png)
 
 Electron-приложение (`desktop/`) — рабочее место заказчика: создание проекта с ИИ-описанием,
 подбор исполнителей, эскроу-сделка, показатели аналитики. Стиль повторяет сайт компании:

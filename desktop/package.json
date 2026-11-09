@@ -6,9 +6,11 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "shots": "electron . --capture"
+    "shots": "electron . --capture",
+    "lint": "eslint renderer"
   },
   "devDependencies": {
-    "electron": "^45.2.3"
+    "electron": "^45.2.3",
+    "eslint": "^9.15.0"
   }
 }

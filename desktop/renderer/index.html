@@ -22,6 +22,8 @@
       <a class="side__link" href="#" data-view="kpi">Показатели</a>
     </nav>
 
+    <button class="side__switch" id="hero-switch" type="button">Другой человечек</button>
+
     <div class="side__foot">
       <span>workspace-service · 8090</span>
       <span id="side-status">подключение…</span>
@@ -33,6 +35,14 @@
       <h1 class="workspace__title" id="view-title">Новый проект</h1>
       <span class="status"><span class="status__dot" id="stack-dot"></span><span id="stack-status">проверяю стек…</span></span>
     </header>
+
+    <div class="steps" id="steps">
+      <span class="steps__item steps__item--active">1 · Черновик проекта</span>
+      <span class="steps__arrow">→</span>
+      <span class="steps__item">2 · Эскроу</span>
+      <span class="steps__arrow">→</span>
+      <span class="steps__item">3 · Закрытие</span>
+    </div>
 
     <div class="workspace__body">
 
@@ -59,11 +69,12 @@
             <button class="btn btn--accent" id="draft-run" type="button">Создать проект</button>
           </div>
 
-          <div class="panel panel--flat">
+          <div class="panel panel--flat panel--art">
             <h2 class="section-title">Описание от ИИ-ассистента</h2>
             <pre class="output" id="draft-text">Создайте проект — здесь появится сгенерированное описание.</pre>
             <h2 class="section-title">Подобранные исполнители</h2>
             <div id="candidates"></div>
+            <div class="art-strip"><img class="card-crew" src="assets/crew.svg" alt=""></div>
           </div>
         </div>
       </section>
@@ -81,30 +92,35 @@
             <p class="muted" id="deal-hint" style="margin-bottom:0">Выберите исполнителя на вкладке «Проект».</p>
           </div>
 
-          <div class="panel panel--flat">
+          <div class="panel panel--flat panel--art">
             <h2 class="section-title">Состояние сделки</h2>
+            <div class="timeline" id="deal-timeline"></div>
             <div id="deal-cards">
               <div class="candidate"><span class="candidate__name muted">Сделка ещё не создана</span></div>
             </div>
             <h2 class="section-title">Уведомление исполнителю</h2>
             <pre class="output" id="notification-state">—</pre>
+            <div class="art-strip"><img class="card-crew" src="assets/crew.svg" alt=""></div>
           </div>
         </div>
       </section>
 
       <section class="view" data-view="kpi" hidden>
         <div class="kpi" id="kpi-cards"></div>
-        <div class="panel panel--flat">
+        <div class="panel panel--flat panel--art">
           <h2 class="section-title">События аналитики</h2>
           <table class="table">
             <tbody id="kpi-body">
               <tr><td colspan="2" class="muted">Загружаю показатели…</td></tr>
             </tbody>
           </table>
+          <div class="art-strip"><img class="card-crew" src="assets/crew.svg" alt=""></div>
         </div>
       </section>
 
     </div>
+
+    <img class="hero-art" id="hero-art" src="assets/hero-a.svg" alt="">
   </main>
 </div>
 

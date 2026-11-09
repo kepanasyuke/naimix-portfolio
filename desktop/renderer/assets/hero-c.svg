@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none" role="img" aria-label="Специалист в очках с чашкой кофе">
+  <defs>
+    <linearGradient id="tee-c" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef2f2"/>
+    </linearGradient>
+    <linearGradient id="skin-c" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8d8c2"/>
+      <stop offset="100%" stop-color="#e8b795"/>
+    </linearGradient>
+    <linearGradient id="blade-c" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f15330" stop-opacity="0"/>
+      <stop offset="48%" stop-color="#f15330" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#f15330" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="160" cy="152" r="114" fill="#fe982d" opacity="0.12"/>
+  <circle cx="160" cy="152" r="84" fill="#0c6565" opacity="0.08"/>
+
+  <rect x="58" y="88" width="17" height="17" rx="5" fill="#0c6565" opacity="0.35" transform="rotate(-20 66 96)"/>
+  <circle cx="252" cy="120" r="5" fill="#f15330" opacity="0.5"/>
+  <rect x="246" y="182" width="13" height="13" rx="4" fill="#fe982d" opacity="0.45" transform="rotate(16 252 188)"/>
+
+  <path d="M100 380 L100 272 C100 238 122 214 160 214 C198 214 220 238 220 272 L220 380 Z" fill="url(#tee-c)"/>
+  <path d="M100 380 L100 300 L220 300 L220 380 Z" fill="#f15330" opacity="0.14"/>
+  <path d="M100 272 C100 254 110 240 126 232 L126 380 L100 380 Z" fill="#f15330" opacity="0.9"/>
+
+  <rect x="148" y="186" width="24" height="34" rx="11" fill="#e8b795"/>
+  <circle cx="160" cy="154" r="43" fill="url(#skin-c)"/>
+  <path d="M117 150 C117 112 137 92 160 92 C183 92 203 112 203 150 C200 134 186 122 160 122 C134 122 120 134 117 150 Z" fill="#2b1d16"/>
+  <circle cx="160" cy="86" r="20" fill="#2b1d16"/>
+  <rect x="134" y="140" width="22" height="17" rx="6" fill="#ffffff" stroke="#1b1b1b" stroke-width="3"/>
+  <rect x="166" y="140" width="22" height="17" rx="6" fill="#ffffff" stroke="#1b1b1b" stroke-width="3"/>
+  <path d="M156 148 L166 148" stroke="#1b1b1b" stroke-width="3"/>
+  <path d="M150 174 C157 180 165 180 172 174" stroke="#1b1b1b" stroke-width="3" stroke-linecap="round"/>
+
+  <path d="M104 300 C104 282 112 268 126 262 L126 296 Z" fill="#e8b795"/>
+  <rect x="86" y="286" width="42" height="46" rx="8" fill="#ffffff" stroke="#c2c2c6" stroke-width="3"/>
+  <path d="M128 296 C140 296 144 306 136 314" stroke="#c2c2c6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M96 274 C98 264 106 258 112 258" stroke="#c2c2c6" stroke-width="4" stroke-linecap="round"/>
+
+  <text x="176" y="346" text-anchor="middle" font-family="Onest, Segoe UI, Arial, sans-serif" font-size="40" font-weight="700" fill="#f15330">N</text>
+
+  <path d="M24 316 L266 124 L286 154 L44 346 Z" fill="url(#blade-c)" opacity="0.5"/>
+</svg>

@@ -4,6 +4,19 @@ const state = { vacancyId: null, holdId: null, candidates: [] };
 
 const qs = (selector) => document.querySelector(selector);
 
+const HERO_VARIANTS = ["assets/hero-a.svg", "assets/hero-b.svg", "assets/hero-c.svg"];
+
+let heroIndex = 0;
+
+const setHero = (index) => {
+  heroIndex = index % HERO_VARIANTS.length;
+  qs("#hero-art").src = HERO_VARIANTS[heroIndex];
+};
+
+const cycleHero = () => {
+  setHero(heroIndex + 1);
+};
+
 const setText = (selector, value) => {
   qs(selector).textContent = value;
 };
@@ -20,6 +33,15 @@ const setSideStatus = (ok) => {
 const setStatus = (value, ok) => {
   setText("#stack-status", value);
   setSideStatus(ok);
+};
+
+const paintStep = (item, position, index) => {
+  item.classList.toggle("steps__item--done", position < index);
+  item.classList.toggle("steps__item--active", position === index);
+};
+
+const setStep = (index) => {
+  document.querySelectorAll(".steps__item").forEach((item, position) => paintStep(item, position, index));
 };
 
 const percent = (score) => Math.round(score * 100) + "%";
@@ -71,6 +93,7 @@ const renderPick = (draft) => {
 
 const announceDraft = (draft) => {
   setStatus("проект создан · " + draft.candidates.length + " кандидатов", true);
+  setStep(1);
 };
 
 const paintDraft = (draft) => {
@@ -112,9 +135,36 @@ const paintNotification = (assignment) => {
   qs("#notification-state").textContent = "Уведомление: " + assignment.notificationId;
 };
 
+const TIMELINE_LABELS = ["Резерв", "Закрытие"];
+
+const isHelded = (status) => status === "HELD";
+
+const isClosed = (status) => status === "CAPTURED" || status === "RELEASED";
+
+const stageOf = (status) => (isClosed(status) ? 2 : Number(isHelded(status)));
+
+const stageClass = (position, stage) => (position < stage ? "timeline__step timeline__step--done" : "timeline__step");
+
+const timelineStep = (position, stage, label) =>
+  '<span class="' + stageClass(position, stage) + '" title="' + label + '"></span>';
+
+const drawTimeline = (stage) => {
+  setStep(stage);
+  qs("#deal-timeline").innerHTML = TIMELINE_LABELS.map((label, position) => timelineStep(position, stage, label)).join("");
+};
+
+const renderTimeline = (status) => {
+  drawTimeline(stageOf(status));
+};
+
 const paintDeal = (assignment) => {
   qs("#deal-cards").innerHTML = dealCard(assignment);
+  advanceDeal(assignment);
+};
+
+const advanceDeal = (assignment) => {
   enableDeal();
+  renderTimeline(assignment.status);
 };
 
 const renderAssignment = (assignment) => {
@@ -225,7 +275,12 @@ const bind = (selector, handler) => {
   qs(selector).addEventListener("click", handler);
 };
 
-const BINDINGS = [["#draft-run", runDraft], ["#accept-run", runAccept], ["#cancel-run", runCancel]];
+const BINDINGS = [
+  ["#draft-run", runDraft],
+  ["#accept-run", runAccept],
+  ["#cancel-run", runCancel],
+  ["#hero-switch", cycleHero]
+];
 
 const bindPair = (pair) => bind(pair[0], pair[1]);
 
@@ -243,6 +298,12 @@ const main = () => {
   start();
 };
 
-window.__demo = { showDraft: showDraft, showAssignment: showAssignment, showKpi: showKpi, view: showView };
+window.__demo = {
+  showDraft: showDraft,
+  showAssignment: showAssignment,
+  showKpi: showKpi,
+  view: showView,
+  setHero: setHero
+};
 
 document.addEventListener("DOMContentLoaded", main);
