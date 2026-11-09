@@ -7,7 +7,7 @@
   <title>Наймикс · Кабинет заказчика</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-view="project">
 
 <div class="app">
   <aside class="side">
@@ -21,8 +21,6 @@
       <a class="side__link" href="#" data-view="deal">Сделка</a>
       <a class="side__link" href="#" data-view="kpi">Показатели</a>
     </nav>
-
-    <button class="side__switch" id="hero-switch" type="button">Другой человечек</button>
 
     <div class="side__foot">
       <span>workspace-service · 8090</span>
@@ -69,12 +67,11 @@
             <button class="btn btn--accent" id="draft-run" type="button">Создать проект</button>
           </div>
 
-          <div class="panel panel--flat panel--art">
+          <div class="panel panel--flat">
             <h2 class="section-title">Описание от ИИ-ассистента</h2>
             <pre class="output" id="draft-text">Создайте проект — здесь появится сгенерированное описание.</pre>
             <h2 class="section-title">Подобранные исполнители</h2>
             <div id="candidates"></div>
-            <div class="art-strip"><img class="card-crew" src="assets/crew.svg" alt=""></div>
           </div>
         </div>
       </section>
@@ -92,7 +89,7 @@
             <p class="muted" id="deal-hint" style="margin-bottom:0">Выберите исполнителя на вкладке «Проект».</p>
           </div>
 
-          <div class="panel panel--flat panel--art">
+          <div class="panel panel--flat">
             <h2 class="section-title">Состояние сделки</h2>
             <div class="timeline" id="deal-timeline"></div>
             <div id="deal-cards">
@@ -100,27 +97,61 @@
             </div>
             <h2 class="section-title">Уведомление исполнителю</h2>
             <pre class="output" id="notification-state">—</pre>
-            <div class="art-strip"><img class="card-crew" src="assets/crew.svg" alt=""></div>
           </div>
         </div>
       </section>
 
       <section class="view" data-view="kpi" hidden>
         <div class="kpi" id="kpi-cards"></div>
-        <div class="panel panel--flat panel--art">
+        <div class="panel panel--flat">
           <h2 class="section-title">События аналитики</h2>
           <table class="table">
             <tbody id="kpi-body">
               <tr><td colspan="2" class="muted">Загружаю показатели…</td></tr>
             </tbody>
           </table>
-          <div class="art-strip"><img class="card-crew" src="assets/crew.svg" alt=""></div>
         </div>
       </section>
 
     </div>
 
-    <img class="hero-art" id="hero-art" src="assets/hero-a.svg" alt="">
+    <svg class="character" id="character" viewBox="0 0 240 340" fill="none" aria-hidden="true">
+      <g class="ch-figure" stroke="#1b1b1b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M52 340 C52 268 82 224 120 224 C158 224 188 268 188 340"/>
+        <path d="M103 224 L103 198"/>
+        <path d="M137 224 L137 198"/>
+        <path d="M74 154 C74 110 94 86 120 86 C146 86 166 110 166 154 C166 184 146 200 120 200 C94 200 74 184 74 154 Z"/>
+        <path d="M76 148 C76 108 96 82 120 82 C144 82 164 108 164 148"/>
+        <path d="M97 94 C105 87 112 83 120 81"/>
+        <path d="M166 152 C175 154 175 170 166 173"/>
+        <path d="M101 148 C105 144 111 144 115 148"/>
+        <path d="M125 148 C129 144 135 144 139 148"/>
+        <path d="M112 174 C116 178 124 178 128 174"/>
+        <path d="M99 224 C107 237 133 237 141 224"/>
+      </g>
+
+      <g class="ch-prop ch-prop--project" stroke="#f15330" stroke-width="2.4" stroke-linecap="round">
+        <rect x="86" y="252" width="68" height="52" rx="6"/>
+        <path d="M96 266 H144"/>
+        <path d="M96 278 H136"/>
+        <path d="M96 290 H126"/>
+      </g>
+
+      <g class="ch-prop ch-prop--deal" stroke="#f15330" stroke-width="2.4" stroke-linecap="round">
+        <circle cx="120" cy="278" r="24"/>
+        <path d="M113 266 H129"/>
+        <path d="M113 290 H129"/>
+        <path d="M121 262 V294"/>
+      </g>
+
+      <g class="ch-prop ch-prop--kpi" stroke="#f15330" stroke-width="2.4" stroke-linecap="round">
+        <path d="M88 300 L108 282 L124 292 L152 258"/>
+        <path d="M86 300 V256" opacity="0.45"/>
+        <circle cx="152" cy="258" r="4" fill="#f15330" stroke="none"/>
+      </g>
+
+      <circle class="ch-dot" cx="190" cy="118" r="6" fill="#0c6565" opacity="0.55"/>
+    </svg>
   </main>
 </div>
 

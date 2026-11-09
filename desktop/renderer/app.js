@@ -4,17 +4,9 @@ const state = { vacancyId: null, holdId: null, candidates: [] };
 
 const qs = (selector) => document.querySelector(selector);
 
-const HERO_VARIANTS = ["assets/hero-a.svg", "assets/hero-b.svg", "assets/hero-c.svg"];
-
-let heroIndex = 0;
-
-const setHero = (index) => {
-  heroIndex = index % HERO_VARIANTS.length;
-  qs("#hero-art").src = HERO_VARIANTS[heroIndex];
-};
-
-const cycleHero = () => {
-  setHero(heroIndex + 1);
+const trackScroll = (event) => {
+  const ratio = event.target.scrollTop / (event.target.scrollHeight - event.target.clientHeight || 1);
+  qs("#character").style.setProperty("--scroll", String(ratio));
 };
 
 const setText = (selector, value) => {
@@ -250,9 +242,14 @@ const markActive = (name) => {
   });
 };
 
+const labelSection = (name) => {
+  setText("#view-title", TITLES[name]);
+  document.body.dataset.view = name;
+};
+
 const focusSection = (name) => {
   markActive(name);
-  setText("#view-title", TITLES[name]);
+  labelSection(name);
 };
 
 const showView = (name) => {
@@ -275,12 +272,7 @@ const bind = (selector, handler) => {
   qs(selector).addEventListener("click", handler);
 };
 
-const BINDINGS = [
-  ["#draft-run", runDraft],
-  ["#accept-run", runAccept],
-  ["#cancel-run", runCancel],
-  ["#hero-switch", cycleHero]
-];
+const BINDINGS = [["#draft-run", runDraft], ["#accept-run", runAccept], ["#cancel-run", runCancel]];
 
 const bindPair = (pair) => bind(pair[0], pair[1]);
 
@@ -288,8 +280,17 @@ const wireNav = () => {
   document.querySelectorAll(".side__link").forEach(bindNav);
 };
 
-const start = () => {
+const wireScroll = () => {
+  qs(".workspace__body").addEventListener("scroll", trackScroll);
+};
+
+const wire = () => {
   wireNav();
+  wireScroll();
+};
+
+const start = () => {
+  wire();
   loadOverview();
 };
 
@@ -302,8 +303,7 @@ window.__demo = {
   showDraft: showDraft,
   showAssignment: showAssignment,
   showKpi: showKpi,
-  view: showView,
-  setHero: setHero
+  view: showView
 };
 
 document.addEventListener("DOMContentLoaded", main);

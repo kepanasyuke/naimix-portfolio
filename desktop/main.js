@@ -133,14 +133,6 @@ async function captureScenario(win) {
   await delay(800);
   await shot(win, "03-kpi.png");
 
-  await inject(win, "window.__demo.setHero(1)");
-  await delay(600);
-  await shot(win, "04-hero-b.png");
-
-  await inject(win, "window.__demo.setHero(2)");
-  await delay(600);
-  await shot(win, "05-hero-c.png");
-
   app.quit();
 }
 
