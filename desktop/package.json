@@ -1,0 +1,14 @@
+{
+  "name": "naimix-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Оконное приложение кабинета заказчика поверх микросервисов",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "shots": "electron . --capture"
+  },
+  "devDependencies": {
+    "electron": "^45.2.3"
+  }
+}

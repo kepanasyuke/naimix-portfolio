@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline';">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Наймикс · Кабинет заказчика</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <span class="brand__mark">N</span>
+      <span class="brand__text">Наймикс<span class="brand__sub">рабочее место</span></span>
+    </div>
+
+    <nav class="side__nav">
+      <a class="side__link side__link--active" href="#" data-view="project">Проект</a>
+      <a class="side__link" href="#" data-view="deal">Сделка</a>
+      <a class="side__link" href="#" data-view="kpi">Показатели</a>
+    </nav>
+
+    <div class="side__foot">
+      <span>workspace-service · 8090</span>
+      <span id="side-status">подключение…</span>
+    </div>
+  </aside>
+
+  <main class="workspace">
+    <header class="workspace__bar">
+      <h1 class="workspace__title" id="view-title">Новый проект</h1>
+      <span class="status"><span class="status__dot" id="stack-dot"></span><span id="stack-status">проверяю стек…</span></span>
+    </header>
+
+    <div class="workspace__body">
+
+      <section class="view" data-view="project">
+        <div class="columns">
+          <div class="panel panel--flat">
+            <h2 class="section-title">Параметры задачи</h2>
+            <div class="field">
+              <label for="title">Роль</label>
+              <input id="title" type="text" value="Старший backend-разработчик">
+            </div>
+            <div class="field">
+              <label for="city">Город</label>
+              <input id="city" type="text" value="Москва">
+            </div>
+            <div class="field">
+              <label for="skills">Ключевые навыки</label>
+              <input id="skills" type="text" value="Java 17, Spring Boot, PostgreSQL, Kafka">
+            </div>
+            <div class="field">
+              <label for="budget">Ставка, ₽/час</label>
+              <input id="budget" type="number" value="3000" min="100" step="100">
+            </div>
+            <button class="btn btn--accent" id="draft-run" type="button">Создать проект</button>
+          </div>
+
+          <div class="panel panel--flat">
+            <h2 class="section-title">Описание от ИИ-ассистента</h2>
+            <pre class="output" id="draft-text">Создайте проект — здесь появится сгенерированное описание.</pre>
+            <h2 class="section-title">Подобранные исполнители</h2>
+            <div id="candidates"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="deal" hidden>
+        <div class="columns">
+          <div class="panel panel--flat">
+            <h2 class="section-title">Эскроу</h2>
+            <div class="field">
+              <label for="amount">Сумма сделки, ₽</label>
+              <input id="amount" type="number" value="12000" min="100" step="500">
+            </div>
+            <button class="btn btn--dark" id="accept-run" type="button" disabled>Принять работу и оплатить</button>
+            <button class="btn btn--ghost" id="cancel-run" type="button" disabled>Отменить проект</button>
+            <p class="muted" id="deal-hint" style="margin-bottom:0">Выберите исполнителя на вкладке «Проект».</p>
+          </div>
+
+          <div class="panel panel--flat">
+            <h2 class="section-title">Состояние сделки</h2>
+            <div id="deal-cards">
+              <div class="candidate"><span class="candidate__name muted">Сделка ещё не создана</span></div>
+            </div>
+            <h2 class="section-title">Уведомление исполнителю</h2>
+            <pre class="output" id="notification-state">—</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="kpi" hidden>
+        <div class="kpi" id="kpi-cards"></div>
+        <div class="panel panel--flat">
+          <h2 class="section-title">События аналитики</h2>
+          <table class="table">
+            <tbody id="kpi-body">
+              <tr><td colspan="2" class="muted">Загружаю показатели…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

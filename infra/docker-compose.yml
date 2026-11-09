@@ -1,0 +1,154 @@
+name: naimix-portfolio
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: naimix
+      POSTGRES_PASSWORD: naimix
+      POSTGRES_DB: naimix
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U naimix"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  kafka:
+    image: bitnami/kafka:3.7
+    environment:
+      KAFKA_CFG_NODE_ID: 1
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    ports:
+      - "9092:9092"
+
+  auth-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: auth-service
+    environment:
+      REDIS_HOST: redis
+      DB_URL: jdbc:postgresql://postgres:5432/auth
+      DB_USER: naimix
+      DB_PASSWORD: naimix
+      AUTH_TOKEN_STORE: redis
+    ports:
+      - "8081:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  vacancy-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: vacancy-service
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/vacancy
+      DB_USER: naimix
+      DB_PASSWORD: naimix
+      CACHE_TYPE: redis
+      REDIS_HOST: redis
+    ports:
+      - "8082:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  matching-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: matching-service
+    ports:
+      - "8083:8080"
+
+  notification-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: notification-service
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/notification
+      DB_USER: naimix
+      DB_PASSWORD: naimix
+    ports:
+      - "8084:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  billing-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: billing-service
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/billing
+      DB_USER: naimix
+      DB_PASSWORD: naimix
+    ports:
+      - "8085:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  analytics-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: analytics-service
+    environment:
+      ANALYTICS_STORE: redis
+      REDIS_HOST: redis
+    ports:
+      - "8086:8080"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  ai-assistant-service:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        SERVICE: ai-assistant-service
+    ports:
+      - "8087:8080"
+
+volumes:
+  postgres-data:
+  redis-data:

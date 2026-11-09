@@ -1,0 +1,13 @@
+{
+  "name": "naimix-portfolio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Статическое портфолио и демо-дашборд сервисов",
+  "type": "commonjs",
+  "scripts": {
+    "lint": "eslint assets"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0"
+  }
+}

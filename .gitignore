@@ -1,0 +1,26 @@
+# сборка
+target/
+*.class
+*.jar
+*.jar.original
+
+# node
+node_modules/
+npm-debug.log*
+
+# логи запусков
+logs/
+*.log
+
+# окружение и IDE
+.env
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# локальные данные
+pgdata/
+pgdata2/
+*.pid

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кабинет заказчика · Наймикс</title>
+  <meta name="description" content="Рабочий кабинет заказчика: создать проект с ИИ-описанием, получить подбор исполнителей, зарезервировать оплату и закрыть сделку.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">N</span>
+      <span class="brand__text">Наймикс<span class="brand__sub">кабинет заказчика</span></span>
+    </a>
+    <nav class="nav">
+      <a href="#create">Новый проект</a>
+      <a href="#deal">Сделка</a>
+      <a href="#kpi">Показатели</a>
+      <a href="index.html">Портфолио</a>
+    </nav>
+    <span class="status"><span class="status__dot" id="stack-dot"></span><span id="stack-status">проверяю связь со стеком…</span></span>
+  </div>
+</header>
+
+<section class="hero" style="padding:56px 0 48px">
+  <div class="wrap">
+    <span class="hero__eyebrow"><span class="hero__dot"></span>Сквозной процесс: ИИ-описание → подбор → эскроу → закрытие</span>
+    <h1 class="hero__title" style="font-size:clamp(32px,4.4vw,54px);margin:20px 0 12px">
+      От задачи до оплаты <span>в одном рабочем окне</span>
+    </h1>
+    <p class="hero__lead" style="margin-bottom:0">
+      Кабинет работает поверх восьми сервисов: описание готовит ИИ-ассистент, исполнителей ранжирует матчинг,
+      деньги резервирует биллинг, а каждое действие попадает в аналитику.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="create" style="padding-top:56px">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">1. Новый проект</h2>
+      <p class="head__note">Опишите задачу в трёх полях — текст вакансии и подборку исполнителей соберёт система.</p>
+    </div>
+
+    <div class="dash">
+      <div class="panel">
+        <div class="field">
+          <label for="title">Роль</label>
+          <input id="title" type="text" value="Старший backend-разработчик">
+        </div>
+        <div class="field">
+          <label for="city">Город</label>
+          <input id="city" type="text" value="Москва">
+        </div>
+        <div class="field">
+          <label for="skills">Ключевые навыки</label>
+          <input id="skills" type="text" value="Java 17, Spring Boot, PostgreSQL, Kafka">
+        </div>
+        <div class="field">
+          <label for="budget">Ставка, ₽/час</label>
+          <input id="budget" type="number" value="3000" min="100" step="100">
+        </div>
+        <button class="btn btn--accent" id="draft-run" type="button">Создать проект</button>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin-top:0;font-size:16px">Описание от ИИ-ассистента</h3>
+        <pre class="output" id="draft-text">Создайте проект — здесь появится сгенерированное описание вакансии.</pre>
+        <h3 style="font-size:16px">Подобранные исполнители</h3>
+        <div class="result" id="candidates" aria-live="polite">
+          <div class="result__row"><span class="result__name muted">Список пока пуст</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--stone" id="deal">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">2. Сделка и эскроу</h2>
+      <p class="head__note">Оплата резервируется на счёте и уходит исполнителю только после приёмки работы.</p>
+    </div>
+
+    <div class="dash">
+      <div class="panel">
+        <div class="field">
+          <label for="amount">Сумма сделки, ₽</label>
+          <input id="amount" type="number" value="12000" min="100" step="500">
+        </div>
+        <button class="btn btn--dark" id="accept-run" type="button" disabled>Принять работу и оплатить</button>
+        <button class="btn btn--ghost" id="cancel-run" type="button" disabled>Отменить проект</button>
+        <p class="muted" id="deal-hint" style="margin-bottom:0">Сначала выберите исполнителя в подборке.</p>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin-top:0;font-size:16px">Текущая сделка</h3>
+        <pre class="output" id="deal-state">Сделка не создана.</pre>
+        <h3 style="font-size:16px">Уведомление исполнителю</h3>
+        <pre class="output" id="notification-state">—</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kpi">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">3. Показатели</h2>
+      <p class="head__note">Данные приходят из аналитики и каталога вакансий — без ручного ввода.</p>
+    </div>
+    <div class="panel">
+      <table class="table">
+        <tbody id="kpi-body">
+          <tr><td colspan="2" class="muted">Загружаю показатели…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <strong style="color:#fff">Локальный контур</strong>
+      <div>Запросы идут на 127.0.0.1:8090 (workspace-service) и далее по сервисам.</div>
+    </div>
+    <div><a href="index.html">Портфолио</a> · <a href="dashboard.html">Технические демо</a></div>
+  </div>
+</footer>
+
+<script type="module" src="assets/business.js"></script>
+</body>
+</html>

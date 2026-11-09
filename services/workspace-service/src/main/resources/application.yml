@@ -1,0 +1,25 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: workspace-service
+
+services:
+  auth-url: ${AUTH_URL:http://127.0.0.1:8081}
+  vacancy-url: ${VACANCY_URL:http://127.0.0.1:8082}
+  matching-url: ${MATCHING_URL:http://127.0.0.1:8083}
+  billing-url: ${BILLING_URL:http://127.0.0.1:8085}
+  notification-url: ${NOTIFICATION_URL:http://127.0.0.1:8084}
+  analytics-url: ${ANALYTICS_URL:http://127.0.0.1:8086}
+  assistant-url: ${ASSISTANT_URL:http://127.0.0.1:8087}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true

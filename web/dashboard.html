@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Демо-дашборд · Наймикс backend-портфолио</title>
+  <meta name="description" content="Живое демо сервисов портфолио: подбор исполнителей, генерация описания вакансии, проверка холда и метрики JVM.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">N</span>
+      <span class="brand__text">Наймикс<span class="brand__sub">демо-дашборд</span></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">← Портфолио</a>
+      <a href="#matching">Матчинг</a>
+      <a href="#assistant">Ассистент</a>
+      <a href="#billing">Биллинг</a>
+    </nav>
+    <span class="status"><span class="status__dot"></span><span id="backend-status">проверяю сервисы…</span></span>
+  </div>
+</header>
+
+<section class="section section--mist" style="padding-top:48px">
+  <div class="wrap">
+    <h1 style="margin:0 0 12px;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em">Демо сервисов портфолио</h1>
+    <p class="muted" style="max-width:720px;margin:0">
+      Формы обращаются к локальным сервисам на портах 8083, 8085, 8087 и 8086. Если сервис не запущен,
+      страница честно переключается в режим демонстрационных данных — интерфейс остаётся рабочим.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="matching" style="padding-top:56px">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">01 · Матчинг исполнителей</h2>
+      <p class="head__note">matching-service считает TF-IDF по каталогу профилей и возвращает ближайших по смыслу.</p>
+    </div>
+
+    <div class="dash">
+      <div class="panel">
+        <div class="field">
+          <label for="match-text">Текст вакансии</label>
+          <textarea id="match-text">Нужен backend-разработчик на Java Spring, PostgreSQL и Kafka. Важны транзакции, идемпотентность и надёжная доставка сообщений.</textarea>
+        </div>
+        <button class="btn btn--accent" id="match-run" type="button">Подобрать исполнителей</button>
+      </div>
+
+      <div class="panel">
+        <div class="result" id="match-results" aria-live="polite">
+          <div class="result__row"><span class="result__name">Нажмите «Подобрать исполнителей»</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--stone" id="assistant">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">02 · ИИ-ассистент вакансии</h2>
+      <p class="head__note">ai-assistant-service собирает описание по структуре запроса и соблюдает квоту клиента.</p>
+    </div>
+
+    <div class="dash">
+      <div class="panel">
+        <div class="field">
+          <label for="gen-title">Роль</label>
+          <input id="gen-title" type="text" value="Старший backend-разработчик">
+        </div>
+        <div class="field">
+          <label for="gen-city">Город</label>
+          <input id="gen-city" type="text" value="Москва">
+        </div>
+        <div class="field">
+          <label for="gen-skills">Ключевые навыки</label>
+          <input id="gen-skills" type="text" value="Java 17, Spring Boot, PostgreSQL, Kafka">
+        </div>
+        <button class="btn btn--dark" id="gen-run" type="button">Сгенерировать описание</button>
+      </div>
+
+      <div class="panel">
+        <pre class="output" id="gen-output">Здесь появится сгенерированный текст вакансии.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="billing">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">03 · Холд в биллинге</h2>
+      <p class="head__note">billing-service резервирует сумму под задачу и запрещает повторную операцию по тому же ключу.</p>
+    </div>
+
+    <div class="dash">
+      <div class="panel">
+        <div class="field">
+          <label for="hold-amount">Сумма холда, ₽</label>
+          <input id="hold-amount" type="number" value="12000" min="1" step="100">
+        </div>
+        <button class="btn btn--ghost" id="hold-run" type="button">Проверить холд</button>
+      </div>
+
+      <div class="panel">
+        <pre class="output" id="hold-output">Ожидание запроса к биллингу.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist" id="analytics">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">04 · Метрики и счётчики</h2>
+      <p class="head__note">analytics-service отдаёт топ событий и снимок JVM: heap, потоки, uptime.</p>
+    </div>
+
+    <div class="panel">
+      <table class="table">
+        <thead>
+          <tr><th>Показатель</th><th>Значение</th></tr>
+        </thead>
+        <tbody id="analytics-summary">
+          <tr><td colspan="2" class="muted">Загружаю метрики…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="notifications">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="head__title">05 · Идемпотентные уведомления</h2>
+      <p class="head__note">notification-service принимает сообщение один раз на ключ и ведёт счётчик попыток доставки.</p>
+    </div>
+
+    <div class="dash">
+      <div class="panel">
+        <div class="field">
+          <label for="notification-key">Ключ идемпотентности</label>
+          <input id="notification-key" type="text" value="task-42-created">
+        </div>
+        <button class="btn btn--dark" id="notification-run" type="button">Отправить уведомление</button>
+      </div>
+
+      <div class="panel">
+        <pre class="output" id="notification-output">Ожидание запроса к сервису уведомлений.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <strong style="color:#fff">Демо-режим</strong>
+      <div>Данные не покидают ваш компьютер: запросы идут только на localhost.</div>
+    </div>
+    <div><a href="index.html">Портфолио</a> · <a href="#analytics">Метрики</a></div>
+  </div>
+</footer>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

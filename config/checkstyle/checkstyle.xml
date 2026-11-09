@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+  "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+  "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker">
+  <property name="charset" value="UTF-8"/>
+  <property name="severity" value="error"/>
+  <property name="fileExtensions" value="java"/>
+
+  <module name="LineLength">
+    <property name="max" value="120"/>
+  </module>
+  <module name="FileTabCharacter"/>
+
+  <module name="TreeWalker">
+
+    <!-- ===================== EXIT POLICY ===================== -->
+    <!-- One exit point per method: a single return. -->
+    <module name="ReturnCount">
+      <property name="max" value="1"/>
+      <property name="maxForVoid" value="0"/>
+    </module>
+    <module name="IllegalToken">
+      <property name="tokens" value="LITERAL_BREAK,LITERAL_CONTINUE,LITERAL_WHILE,LITERAL_DO"/>
+    </module>
+
+    <!-- ===================== FUNCTION SIZE ===================== -->
+    <!-- A function is one or two statements. Constructors are exempt. -->
+    <module name="ExecutableStatementCount">
+      <property name="max" value="2"/>
+      <property name="tokens" value="METHOD_DEF"/>
+    </module>
+    <module name="MethodLength">
+      <property name="max" value="8"/>
+      <property name="countEmpty" value="false"/>
+      <property name="tokens" value="METHOD_DEF"/>
+    </module>
+    <module name="NestedIfDepth">
+      <property name="max" value="1"/>
+    </module>
+    <module name="NestedForDepth">
+      <property name="max" value="1"/>
+    </module>
+    <module name="CyclomaticComplexity">
+      <property name="max" value="3"/>
+      <property name="tokens" value="METHOD_DEF,CTOR_DEF"/>
+    </module>
+
+    <!-- ===================== STATEMENTS ===================== -->
+    <module name="OneStatementPerLine"/>
+    <module name="EmptyStatement"/>
+    <module name="RightCurly">
+      <property name="option" value="alone"/>
+    </module>
+    <module name="LeftCurly"/>
+    <module name="NeedBraces"/>
+    <module name="DefaultComesLast"/>
+    <module name="FallThrough"/>
+    <module name="SimplifyBooleanExpression"/>
+    <module name="SimplifyBooleanReturn"/>
+    <module name="EqualsHashCode"/>
+    <module name="StringLiteralEquality"/>
+
+    <!-- ===================== NAMING ===================== -->
+    <module name="PackageName">
+      <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+    </module>
+    <module name="TypeName"/>
+    <module name="MethodName"/>
+    <module name="ParameterName"/>
+    <module name="LocalVariableName"/>
+    <module name="MemberName"/>
+    <module name="ConstantName"/>
+
+    <!-- ===================== WHITESPACE / STYLE ===================== -->
+    <module name="WhitespaceAround">
+      <property name="allowEmptyTypes" value="false"/>
+    </module>
+    <module name="WhitespaceAfter"/>
+    <module name="NoWhitespaceBefore"/>
+    <module name="ParenPad"/>
+    <module name="EmptyLineSeparator">
+      <property name="allowNoEmptyLineBetweenFields" value="true"/>
+    </module>
+    <module name="Indentation">
+      <property name="basicOffset" value="4"/>
+      <property name="braceAdjustment" value="0"/>
+      <property name="caseIndent" value="4"/>
+      <property name="throwsIndent" value="8"/>
+      <property name="lineWrappingIndentation" value="8"/>
+    </module>
+
+    <!-- ===================== IMPORTS / JAVADOC ===================== -->
+    <module name="UnusedImports"/>
+    <module name="RedundantImport"/>
+    <module name="AvoidStarImport"/>
+    <module name="MissingJavadocMethod">
+      <property name="scope" value="public"/>
+      <property name="minLineCount" value="1"/>
+      <property name="allowMissingPropertyJavadoc" value="true"/>
+      <property name="tokens" value="METHOD_DEF"/>
+    </module>
+
+    <!-- ===================== MODIFIERS / MISC ===================== -->
+    <module name="ModifierOrder"/>
+    <module name="RedundantModifier"/>
+    <module name="FinalLocalVariable">
+      <property name="tokens" value="VARIABLE_DEF"/>
+      <property name="validateEnhancedForLoopVariable" value="true"/>
+    </module>
+    <module name="MagicNumber">
+      <property name="ignoreNumbers" value="-1,0,1,2"/>
+      <property name="ignoreFieldDeclaration" value="true"/>
+      <property name="ignoreAnnotation" value="true"/>
+    </module>
+    <module name="IllegalCatch">
+      <property name="illegalClassNames" value="java.lang.Exception,java.lang.Throwable,java.lang.RuntimeException"/>
+    </module>
+  </module>
+</module>

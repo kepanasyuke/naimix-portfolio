@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: naimix-portfolio
+  labels:
+    app.kubernetes.io/part-of: naimix-portfolio
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shared-config
+  namespace: naimix-portfolio
+data:
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  DB_USER: naimix
+  AUTH_TOKEN_STORE: redis
+  ANALYTICS_STORE: redis
+  CACHE_TYPE: redis
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shared-secrets
+  namespace: naimix-portfolio
+type: Opaque
+stringData:
+  DB_PASSWORD: naimix
+  AUTH_JWT_SECRET: naimix-portfolio-dev-secret-key-32bytes-minimum
