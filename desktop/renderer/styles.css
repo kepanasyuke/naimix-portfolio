@@ -211,9 +211,9 @@ body {
 
 .character {
   position: absolute;
-  right: 12px;
+  right: 22px;
   bottom: 0;
-  width: 218px;
+  width: 236px;
   z-index: 0;
   pointer-events: none;
   user-select: none;
@@ -250,6 +250,11 @@ body[data-view="kpi"] .ch-prop--kpi {
 .ch-dot {
   transform-origin: 190px 118px;
   animation: ch-float 5s ease-in-out infinite;
+}
+
+.ch-dot--slow {
+  animation-duration: 7s;
+  animation-direction: alternate-reverse;
 }
 
 @keyframes ch-float {
