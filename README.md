@@ -11,6 +11,14 @@
 
 ![Кабинет: показатели](desktop/screenshots/03-kpi.png)
 
+### Скриншоты прямыми ссылками
+
+Папка: [desktop/screenshots](desktop/screenshots)
+
+1. [01-project-draft.png](desktop/screenshots/01-project-draft.png) — новый проект с ИИ-описанием и подбором
+2. [02-escrow-held.png](desktop/screenshots/02-escrow-held.png) — сделка, эскроу HELD, уведомление
+3. [03-kpi.png](desktop/screenshots/03-kpi.png) — показатели аналитики
+
 Electron-приложение (`desktop/`) — рабочее место заказчика: создание проекта с ИИ-описанием,
 подбор исполнителей, эскроу-сделка, показатели аналитики. Стиль повторяет сайт компании:
 чёрная навигация, оранжевый акцент, скругления 16/30, шрифт Onest.
