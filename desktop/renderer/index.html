@@ -46,25 +46,32 @@
 
       <section class="view" data-view="project">
         <div class="columns">
-          <div class="panel panel--flat">
-            <h2 class="section-title">Параметры задачи</h2>
-            <div class="field">
-              <label for="title">Роль</label>
-              <input id="title" type="text" value="Старший backend-разработчик">
+          <div class="stack">
+            <div class="panel panel--flat">
+              <h2 class="section-title">Параметры задачи</h2>
+              <div class="field">
+                <label for="title">Роль</label>
+                <input id="title" type="text" value="Старший backend-разработчик">
+              </div>
+              <div class="field">
+                <label for="city">Город</label>
+                <input id="city" type="text" value="Москва">
+              </div>
+              <div class="field">
+                <label for="skills">Ключевые навыки</label>
+                <input id="skills" type="text" value="Java 17, Spring Boot, PostgreSQL, Kafka">
+              </div>
+              <div class="field">
+                <label for="budget">Ставка, ₽/час</label>
+                <input id="budget" type="number" value="3000" min="100" step="100">
+              </div>
+              <button class="btn btn--accent" id="draft-run" type="button">Создать проект</button>
             </div>
-            <div class="field">
-              <label for="city">Город</label>
-              <input id="city" type="text" value="Москва">
-            </div>
-            <div class="field">
-              <label for="skills">Ключевые навыки</label>
-              <input id="skills" type="text" value="Java 17, Spring Boot, PostgreSQL, Kafka">
-            </div>
-            <div class="field">
-              <label for="budget">Ставка, ₽/час</label>
-              <input id="budget" type="number" value="3000" min="100" step="100">
-            </div>
-            <button class="btn btn--accent" id="draft-run" type="button">Создать проект</button>
+
+            <figure class="art">
+              <figcaption class="art__text">Эскроу: деньги уходят исполнителю только после приёмки работы.</figcaption>
+              <img class="art__img" src="assets/payment-cards.png" alt="Стопка карточек проекта и монета" width="832" height="760">
+            </figure>
           </div>
 
           <div class="panel panel--flat">

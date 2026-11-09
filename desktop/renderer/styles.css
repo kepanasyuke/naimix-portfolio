@@ -218,24 +218,35 @@ body {
   color: var(--accent-soft);
 }
 
-.panel--art {
-  position: relative;
-  overflow: hidden;
+.stack {
+  display: grid;
+  gap: 20px;
+  align-content: start;
 }
 
-.art-strip {
-  position: relative;
-  height: 104px;
-  margin: 10px -18px -18px;
-  overflow: hidden;
+.art {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--mist);
 }
 
-.card-crew {
-  position: absolute;
-  right: 6px;
-  bottom: -8px;
-  width: 232px;
-  pointer-events: none;
+.art__text {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--deep);
+}
+
+.art__img {
+  display: block;
+  width: 58px;
+  height: auto;
+  mix-blend-mode: multiply;
   user-select: none;
 }
 
