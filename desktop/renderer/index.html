@@ -115,111 +115,94 @@
 
     </div>
 
-    <svg class="character" id="character" viewBox="0 0 320 420" fill="none" aria-hidden="true">
+    <svg class="character" id="character" viewBox="0 0 320 460" fill="none" aria-hidden="true">
       <defs>
-        <radialGradient id="ch-halo" cx="50%" cy="42%" r="58%">
-          <stop offset="0%" stop-color="#fe982d" stop-opacity="0.30"/>
-          <stop offset="65%" stop-color="#f15330" stop-opacity="0.10"/>
+        <radialGradient id="ch-halo" cx="52%" cy="38%" r="62%">
+          <stop offset="0%" stop-color="#fe982d" stop-opacity="0.32"/>
+          <stop offset="58%" stop-color="#f15330" stop-opacity="0.11"/>
           <stop offset="100%" stop-color="#f15330" stop-opacity="0"/>
         </radialGradient>
-        <linearGradient id="ch-skin" x1="0" y1="0" x2="0.35" y2="1">
-          <stop offset="0%" stop-color="#fce3cf"/>
-          <stop offset="55%" stop-color="#f4cbae"/>
-          <stop offset="100%" stop-color="#dfa886"/>
+        <linearGradient id="ch-coin" x1="0" y1="0" x2="0.55" y2="1">
+          <stop offset="0%" stop-color="#ffc37a"/>
+          <stop offset="52%" stop-color="#fe982d"/>
+          <stop offset="100%" stop-color="#d97512"/>
         </linearGradient>
-        <linearGradient id="ch-shirt" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="100%" stop-color="#e9eded"/>
-        </linearGradient>
-        <linearGradient id="ch-hair" x1="0.1" y1="0" x2="0.6" y2="1">
-          <stop offset="0%" stop-color="#43312a"/>
-          <stop offset="55%" stop-color="#251a14"/>
-          <stop offset="100%" stop-color="#150e0a"/>
-        </linearGradient>
-        <linearGradient id="ch-rim" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ff8562" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#ff8562" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="ch-coin" x1="0" y1="0" x2="0.6" y2="1">
-          <stop offset="0%" stop-color="#ffb45c"/>
-          <stop offset="55%" stop-color="#fe982d"/>
-          <stop offset="100%" stop-color="#e07c14"/>
-        </linearGradient>
+        <filter id="ch-shadow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#1b1210" flood-opacity="0.16"/>
+        </filter>
+        <filter id="ch-grain" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
       </defs>
 
-      <circle cx="164" cy="186" r="136" fill="url(#ch-halo)"/>
+      <circle cx="160" cy="212" r="152" fill="url(#ch-halo)"/>
+      <circle cx="160" cy="216" r="136" fill="none" stroke="#0c6565" stroke-width="1.5" opacity="0.08"/>
+      <circle cx="160" cy="216" r="112" fill="none" stroke="#f15330" stroke-width="1.5" opacity="0.06"/>
 
       <g class="ch-figure">
-        <path d="M34 420 C34 348 72 296 118 278 L206 278 C252 296 290 348 290 420 Z" fill="url(#ch-shirt)"/>
-        <path d="M34 420 C34 352 66 304 106 286 C86 316 70 366 70 420 Z" fill="#e3e8e8" opacity="0.85"/>
-        <path d="M290 420 C290 352 258 304 218 286 C238 316 254 366 254 420 Z" fill="#e3e8e8" opacity="0.85"/>
-        <path d="M118 278 C130 304 194 304 206 278" stroke="#d3d9d9" stroke-width="3" fill="none"/>
-        <path d="M96 292 C80 312 70 336 66 362" stroke="url(#ch-rim)" stroke-width="7" stroke-linecap="round" opacity="0.65"/>
+        <g transform="rotate(-8 152 244)">
+          <rect x="52" y="120" width="200" height="250" rx="26" fill="#ffffff" opacity="0.62"/>
+          <rect x="52" y="120" width="200" height="250" rx="26" fill="none" stroke="#e2e8e8" stroke-width="1.5"/>
+        </g>
 
-        <path d="M138 232 L138 288 C138 304 186 304 186 288 L186 232 Z" fill="#e7b291"/>
-        <path d="M138 252 C150 268 174 268 186 252 L186 288 C186 300 138 300 138 288 Z" fill="#d59b7b" opacity="0.5"/>
+        <g filter="url(#ch-shadow)" transform="rotate(-3 143 277)">
+          <rect x="40" y="150" width="206" height="254" rx="26" fill="#ffffff"/>
+          <circle cx="70" cy="184" r="13" fill="#f15330"/>
+          <rect x="94" y="176" width="82" height="6" rx="3" fill="#dfe5e5"/>
+          <rect x="94" y="188" width="52" height="5" rx="2.5" fill="#eef2f2"/>
+          <rect x="200" y="176" width="30" height="16" rx="8" fill="#0c6565" opacity="0.13"/>
 
-        <ellipse cx="162" cy="166" rx="62" ry="70" fill="url(#ch-skin)"/>
-        <path d="M100 164 C90 156 84 172 93 184 C97 189 102 187 102 182" fill="#f0c3a6"/>
-        <path d="M224 164 C234 156 240 172 231 184 C227 189 222 187 222 182" fill="#f0c3a6"/>
-        <path d="M112 206 C130 234 194 234 212 206" stroke="#d59b7b" stroke-width="3" fill="none" opacity="0.45"/>
+          <rect x="58" y="206" width="172" height="1.5" fill="#eef2f2"/>
 
-        <path d="M98 168 C88 104 122 70 162 72 C202 74 236 108 228 172 C230 138 210 112 162 112 C114 112 96 138 98 168 Z" fill="url(#ch-hair)"/>
-        <path d="M106 148 C116 102 138 82 162 82 C188 84 208 104 218 148 C206 122 188 110 162 110 C134 110 116 122 106 148 Z" fill="url(#ch-hair)"/>
-        <path d="M114 132 C128 112 144 102 160 100" stroke="#63493b" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+          <text x="58" y="256" font-family="Onest, Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" fill="#0c6565">24</text>
+          <rect x="124" y="232" width="66" height="6" rx="3" fill="#dfe5e5"/>
+          <rect x="124" y="245" width="44" height="5" rx="2.5" fill="#eef2f2"/>
 
-        <path d="M126 142 C137 134 150 134 158 141" stroke="#2a1c15" stroke-width="4.5" stroke-linecap="round"/>
-        <path d="M166 141 C175 134 188 134 198 142" stroke="#2a1c15" stroke-width="4.5" stroke-linecap="round"/>
+          <rect x="58" y="278" width="64" height="5" rx="2.5" fill="#eef2f2"/>
+          <rect x="58" y="292" width="172" height="10" rx="5" fill="#f0f4f4"/>
+          <rect x="58" y="292" width="116" height="10" rx="5" fill="#f15330"/>
 
-        <path d="M124 165 C134 156 150 156 159 165 C150 173 134 173 124 165 Z" fill="#ffffff"/>
-        <path d="M165 165 C174 156 190 156 200 165 C190 173 174 173 165 165 Z" fill="#ffffff"/>
-        <circle cx="141" cy="165" r="6.2" fill="#2b1d16"/>
-        <circle cx="183" cy="165" r="6.2" fill="#2b1d16"/>
-        <circle cx="143" cy="162.6" r="2.2" fill="#ffffff"/>
-        <circle cx="185" cy="162.6" r="2.2" fill="#ffffff"/>
-        <path d="M124 165 C134 173 150 173 159 165" stroke="#2a1c15" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-        <path d="M165 165 C174 173 190 173 200 165" stroke="#2a1c15" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-        <path d="M124 164 C134 155 150 155 159 164" stroke="#3a2a22" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
-        <path d="M165 164 C174 155 190 155 200 164" stroke="#3a2a22" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <rect x="58" y="316" width="48" height="5" rx="2.5" fill="#eef2f2"/>
+          <rect x="58" y="330" width="172" height="10" rx="5" fill="#f0f4f4"/>
+          <rect x="58" y="330" width="74" height="10" rx="5" fill="#0c6565" opacity="0.5"/>
 
-        <path d="M162 174 C160 184 158 190 153 194" stroke="#d59b7b" stroke-width="3" stroke-linecap="round"/>
-        <path d="M153 194 C158 198 166 198 171 194" stroke="#c98d6d" stroke-width="3" stroke-linecap="round"/>
-
-        <path d="M147 210 C155 205 169 205 177 210 C169 221 155 221 147 210 Z" fill="#d4756a"/>
-        <path d="M147 210 C155 214 169 214 177 210" stroke="#b85d54" stroke-width="2" fill="none"/>
-
-        <ellipse cx="126" cy="190" rx="13" ry="7" fill="#f19a80" opacity="0.32"/>
-        <ellipse cx="198" cy="190" rx="13" ry="7" fill="#f19a80" opacity="0.32"/>
-
-        <text x="162" y="392" text-anchor="middle" font-family="Onest, Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#f15330" opacity="0.92">N</text>
+          <rect x="58" y="356" width="76" height="28" rx="14" fill="#f15330"/>
+          <rect x="142" y="356" width="88" height="28" rx="14" fill="#ffffff" stroke="#e2e8e8" stroke-width="1.5"/>
+        </g>
       </g>
 
-      <g class="ch-prop ch-prop--project">
-        <rect x="92" y="312" width="140" height="90" rx="14" fill="#ffffff" stroke="#dfe4e4" stroke-width="2"/>
-        <path d="M92 340 H232" stroke="#dfe4e4" stroke-width="2"/>
-        <path d="M110 360 H196" stroke="#f15330" stroke-width="5" stroke-linecap="round"/>
-        <path d="M110 378 H168" stroke="#c9cfcf" stroke-width="5" stroke-linecap="round"/>
-        <circle cx="208" cy="366" r="9" fill="#f15330" opacity="0.9"/>
+      <g class="ch-prop ch-prop--project" filter="url(#ch-shadow)">
+        <rect x="62" y="398" width="132" height="54" rx="16" fill="#ffffff"/>
+        <rect x="62" y="398" width="132" height="54" rx="16" fill="none" stroke="#e2e8e8" stroke-width="1.5"/>
+        <circle cx="84" cy="418" r="7" fill="#f15330"/>
+        <rect x="100" y="414" width="70" height="5" rx="2.5" fill="#dfe5e5"/>
+        <circle cx="84" cy="438" r="7" fill="#0c6565" opacity="0.35"/>
+        <rect x="100" y="434" width="52" height="5" rx="2.5" fill="#eef2f2"/>
       </g>
 
-      <g class="ch-prop ch-prop--deal">
-        <circle cx="162" cy="352" r="50" fill="url(#ch-coin)"/>
-        <circle cx="162" cy="352" r="41" fill="#ffffff"/>
-        <text x="162" y="368" text-anchor="middle" font-family="Onest, Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" fill="#f15330">₽</text>
-        <path d="M126 322 C136 310 152 304 168 304" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+      <g class="ch-prop ch-prop--deal" filter="url(#ch-shadow)">
+        <circle cx="248" cy="382" r="44" fill="url(#ch-coin)"/>
+        <circle cx="248" cy="382" r="35" fill="#ffffff"/>
+        <circle cx="248" cy="382" r="35" fill="none" stroke="#f6c795" stroke-width="2"/>
+        <text x="248" y="396" text-anchor="middle" font-family="Onest, Segoe UI, Arial, sans-serif" font-size="36" font-weight="700" fill="#f15330">₽</text>
+        <path d="M218 356 C228 346 241 342 254 343" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.45" fill="none"/>
       </g>
 
-      <g class="ch-prop ch-prop--kpi">
-        <rect x="92" y="310" width="140" height="92" rx="14" fill="#ffffff" stroke="#dfe4e4" stroke-width="2"/>
-        <path d="M108 386 H216" stroke="#c9cfcf" stroke-width="3" stroke-linecap="round"/>
-        <rect x="116" y="368" width="18" height="18" rx="5" fill="#c9cfcf"/>
-        <rect x="146" y="350" width="18" height="36" rx="5" fill="#f15330" opacity="0.9"/>
-        <rect x="176" y="330" width="18" height="56" rx="5" fill="#0c6565" opacity="0.9"/>
-        <path d="M112 342 L144 326 L172 306" stroke="#fe982d" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+      <g class="ch-prop ch-prop--kpi" filter="url(#ch-shadow)">
+        <rect x="14" y="364" width="118" height="80" rx="16" fill="#ffffff"/>
+        <rect x="14" y="364" width="118" height="80" rx="16" fill="none" stroke="#e2e8e8" stroke-width="1.5"/>
+        <path d="M28 428 H118" stroke="#cfd7d7" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="32" y="406" width="14" height="22" rx="5" fill="#cfd7d7"/>
+        <rect x="52" y="396" width="14" height="32" rx="5" fill="#f15330"/>
+        <rect x="72" y="388" width="14" height="40" rx="5" fill="#0c6565" opacity="0.55"/>
+        <rect x="92" y="374" width="14" height="54" rx="5" fill="#0c6565"/>
+        <path d="M32 398 L56 388 L78 392 L104 376" stroke="#fe982d" stroke-width="3" stroke-linecap="round" fill="none"/>
       </g>
 
-      <circle class="ch-dot" cx="248" cy="120" r="7" fill="#0c6565" opacity="0.55"/>
-      <circle class="ch-dot ch-dot--slow" cx="74" cy="150" r="5" fill="#f15330" opacity="0.5"/>
+      <circle class="ch-dot" cx="270" cy="102" r="7" fill="#0c6565" opacity="0.5"/>
+      <circle class="ch-dot ch-dot--slow" cx="34" cy="196" r="6" fill="#f15330" opacity="0.5"/>
+      <rect width="320" height="460" filter="url(#ch-grain)" opacity="0.05"/>
     </svg>
   </main>
 </div>
