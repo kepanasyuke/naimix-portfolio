@@ -4,11 +4,6 @@ const state = { vacancyId: null, holdId: null, candidates: [] };
 
 const qs = (selector) => document.querySelector(selector);
 
-const trackScroll = (event) => {
-  const ratio = event.target.scrollTop / (event.target.scrollHeight - event.target.clientHeight || 1);
-  qs("#character").style.setProperty("--scroll", String(ratio));
-};
-
 const setText = (selector, value) => {
   qs(selector).textContent = value;
 };
@@ -280,13 +275,8 @@ const wireNav = () => {
   document.querySelectorAll(".side__link").forEach(bindNav);
 };
 
-const wireScroll = () => {
-  qs(".workspace__body").addEventListener("scroll", trackScroll);
-};
-
 const wire = () => {
   wireNav();
-  wireScroll();
 };
 
 const start = () => {
